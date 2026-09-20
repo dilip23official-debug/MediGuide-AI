@@ -1,8 +1,9 @@
 .env
 venv/
-__pycache__/
+**pycache**/
 *.pyc
 db.sqlite3
 media/
 test_report.pdf
 test_report.txt
+medical_reports/test_report_*.pdf

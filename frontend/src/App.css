@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #172033;
+  background: #f5f9fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f5f9fc;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* APP */
+
+.app {
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+
+.navbar {
+  width: 100%;
+  height: 76px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #e7edf3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.logo span {
+  color: #16a6a0;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.navbar nav a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #647083;
+  transition: 0.2s ease;
+}
+
+.navbar nav a:hover {
+  color: #16a6a0;
+}
+
+.profile-btn {
+  border: 1px solid #d9e5ea;
+  background: white;
+  color: #344054;
+  padding: 10px 19px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.profile-btn:hover {
+  border-color: #16a6a0;
+  color: #16a6a0;
+}
+
+/* HERO */
+
+.hero {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 95px 6% 80px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 30px;
+  background: #e4f7f5;
+  color: #078d87;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(45px, 5vw, 70px);
+  line-height: 1.03;
+  letter-spacing: -3px;
+  color: #172033;
+}
+
+.hero h1 span {
+  color: #16a6a0;
+}
+
+.description {
+  margin-top: 25px;
+  max-width: 570px;
+  color: #697586;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border-radius: 11px;
+  padding: 14px 23px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  border: none;
+  color: white;
+  background: #16a6a0;
+  box-shadow: 0 8px 22px rgba(22, 166, 160, 0.22);
+}
+
+.primary-btn:hover {
+  background: #108d88;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: white;
+  color: #344054;
+  border: 1px solid #d9e5ea;
+}
+
+.secondary-btn:hover {
+  border-color: #16a6a0;
+  color: #16a6a0;
+}
+
+/* HEALTH CARD */
+
+.health-card {
+  background: white;
+  padding: 28px;
+  border-radius: 25px;
+  border: 1px solid #e2ebef;
+  box-shadow: 0 25px 60px rgba(33, 57, 74, 0.09);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #edf1f4;
+}
+
+.small-text {
+  color: #16a6a0;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card-header h2 {
+  font-size: 22px;
+}
+
+.status-dot {
+  width: 11px;
+  height: 11px;
+  background: #24c78e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #e8faf3;
+}
+
+.health-items {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.health-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 15px;
+  background: #f7fafb;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  background: #e7f7f5;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.health-item h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.health-item p {
+  color: #7b8794;
+  font-size: 12px;
+}
+
+/* UPLOAD REPORT */
+
+#upload-section {
+  padding: 20px 0 40px;
+}
+
+.upload-report {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px;
+  background: white;
+  border: 1px solid #e2ebef;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(33, 57, 74, 0.08);
+}
+
+.upload-r

@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from pypdf import PdfReader
+import requests
 
 from .models import MedicalReport
 from .serializers import MedicalReportSerializer
@@ -48,8 +49,52 @@ class MedicalReportViewSet(viewsets.ModelViewSet):
                 status=400
             )
 
-        return Response({
-            "report_id": report.id,
-            "message": "AI summary endpoint is ready.",
-            "extracted_text": report.extracted_text,
-        })
+        try:
+            prompt = f"""
+You are MediGuide AI, an educational medical information assistant.
+
+Summarize the following medical report clearly for the patient.
+
+Rules:
+- Use simple language.
+- Explain important findings.
+- Do not diagnose.
+- Do not prescribe medication.
+- Do not claim certainty.
+- Encourage the patient to discuss important findings with a qualified healthcare professional.
+
+Medical Report:
+{report.extracted_text}
+"""
+
+            response = requests.post(
+                "http://localhost:11434/api/generate",
+                json={
+                    "model": "llama3.2:3b",
+                    "prompt": prompt,
+                    "stream": False
+                },
+                timeout=120
+            )
+
+            response.raise_for_status()
+
+            data = response.json()
+            summary = data["response"]
+
+            report.ai_summary = summary
+            report.save(update_fields=["ai_summary"])
+
+            return Response({
+                "report_id": report.id,
+                "ai_summary": summary,
+            })
+
+        except Exception as e:
+            return Response(
+                {
+                    "detail": "AI summarization failed.",
+                    "error": str(e),
+                },
+                status=500
+            )
